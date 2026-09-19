@@ -589,8 +589,10 @@ const METRICS = [
 ];
 const RANGES = [['1h',1],['6h',6],['24h',24],['3d',72],['7d',168],['30d',720]];
 
-let hours = +(localStorage.getItem('am.hours') || 24);
-let msl = localStorage.getItem('am.msl') === '1';
+// 網址參數可覆寫（?hours=1&msl=1），方便書籤 / 截圖；否則記住上次的選擇
+const qs = new URLSearchParams(location.search);
+let hours = +(qs.get('hours') || localStorage.getItem('am.hours') || 24);
+let msl = qs.has('msl') ? qs.get('msl') === '1' : localStorage.getItem('am.msl') === '1';
 let showTable = false;
 let cfg = {}, status = {}, hist = null;
 const charts = {};
