@@ -1,0 +1,7 @@
+# 執行期產物（因人而異、含 API key / 量測資料），不進版控
+config.json
+ambient.db
+ambient.db-wal
+ambient.db-shm
+__pycache__/
+.claude/
